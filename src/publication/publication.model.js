@@ -1,5 +1,27 @@
 import { Schema, model } from "mongoose";
 
+const commentSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+
+    text: {
+        type: String,
+        required: [true, "El comentario no puede estar vacío"],
+        minLength: [1, "El comentario debe tener al menos 1 carácter"],
+        maxLength: [300, "El comentario no puede exceder los 300 caracteres"]
+    }
+},
+
+{
+    timestamps: true,
+    versionKey: false
+}
+
+);
+
 const publicationSchema = new Schema({
     title: {
         type: String,
@@ -20,38 +42,23 @@ const publicationSchema = new Schema({
 
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
         required: true
     },
 
-    comments: [{
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        text: {
-            type: String,
-            required: [true, "El comentario no puede estar vacío"],
-            minLength: [1, "El comentario debe tener al menos 1 carácter"],
-            maxLength: [300, "El comentario no puede exceder los 300 caracteres"]
-        },
-        createdAt: {
-            type: Date,
-            default: Date.now
-        }
-    }],
+    comments: [commentSchema],
 
     status: {
         type: Boolean,
         default: true
     }
-
 }, 
 
 {
     timestamps: true,
     versionKey: false
-});
+}
+
+);
 
 export default model("Publication", publicationSchema);

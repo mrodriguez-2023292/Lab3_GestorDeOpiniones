@@ -1,7 +1,6 @@
 import { body, param } from "express-validator";
 import { publicationExists } from "../helpers/db-validators.js";
 import { validarCampos } from "./validate-fields.js";
-import { deleteFileOnError } from "./delete-file-on-error.js";
 import { handleErrors } from "./handle-errors.js";
 import { validateJWT } from "./validate-jwt.js";
 
@@ -13,8 +12,22 @@ export const addPublicationValidator = [
     validarCampos,
     handleErrors
 ]
+export const addCommentValidator = [
+    validateJWT,
+    body("text").notEmpty().withMessage("El comentario no puede estar vacío"),
+    validarCampos,
+    handleErrors
+]
 
 export const editPublicationValidator = [
+    param("id").isMongoId().withMessage("No es un ID valido de MongoDB"),
+    param("id").custom(publicationExists),
+    validarCampos,
+    handleErrors
+]
+
+export const editCommentValidator = [
+    validateJWT,
     param("id").isMongoId().withMessage("No es un ID valido de MongoDB"),
     param("id").custom(publicationExists),
     validarCampos,
@@ -24,6 +37,15 @@ export const editPublicationValidator = [
 export const deletePublicationValidator = [
     validateJWT,
     param("id").isMongoId().withMessage("No es un ID válido de MongoDB"),
+    param("id").custom(publicationExists),
+    validarCampos,
+    handleErrors
+]
+
+export const deleteCommentValidator = [
+    validateJWT,
+    param("id").isMongoId().withMessage("No es un ID válido de publicación"),
+    param("commentId").isMongoId().withMessage("No es un ID válido de comentario"),
     param("id").custom(publicationExists),
     validarCampos,
     handleErrors

@@ -60,10 +60,10 @@ export const getUsers = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     try {
-        const { uid } = req.params;
-        const { password, ...data } = req.body;
+        const { uid } = req.params
+        const { password, ...data } = req.body
 
-        const user = await User.findById(uid);
+        const user = await User.findById(uid)
 
         if(!user){
             return res.status(404).json({
@@ -73,7 +73,7 @@ export const updateUser = async (req, res) => {
             })
         }
 
-        const validPassword = await verify(user.password, password);
+        const validPassword = await verify(user.password, password)
 
         if(!validPassword){
             return res.status(400).json({

@@ -28,3 +28,10 @@ export const publicationExists = async (id = " ") => {
         throw new Error("No existe la publicación con el ID proporcionado")
     }
 }   
+
+export const commentExists = async (id = " ") => {
+    const existe = await Publication.findById(id)
+    if(!existe){
+        throw new Error("No existe la publicación con el ID proporcionado")
+    }
+}  

@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "1838b9c4-1137-4d83-821b-a9e9d1de5a7e",
+		"name": "API-GO2023292",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41830113"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Mario",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Rodriguez",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "mairo",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mrodriguez@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "36499945",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "n3N@3005",
+									"type": "text"
+								},
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/Mario/Downloads/newProfilePicture.png"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mairo\",\r\n    \"password\": \"n3N@3005\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Editar usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"surname\": \"Gomez\",\r\n    \"username\": \"jg_elpro\",\r\n    \"email\": \"jgomez@gmail.com\",\r\n    \"phone\": \"39282123\",\r\n    \"password\": \"n3N@3005\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/user/updateUser/67b8e855cf8ba4b2b5116c20"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar foto de perfil",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/Mario/Downloads/newProfilePicture.png"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/user/updateImage/67b8c9a5095051fdd45d9e4f"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publication",
+			"item": [
+				{
+					"name": "Agregar publicación",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Nueva función en la app\",\r\n    \"category\": \"Tecnología\",\r\n    \"content\": \"Estamos implementando una nueva función en nuestra aplicación, ¿qué opinas?\",\r\n    \"author\": \"67b937ecf4df5ef994c91929\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/addPublication"
+					},
+					"response": []
+				},
+				{
+					"name": "Ver publicaciónes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar publicación",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"¿Por qué el ejercicio es tan bueno para la salud?\",\r\n    \"category\": \"Ejercicio\",\r\n    \"content\": \"Hacer ejercicio es lo mejor\",\r\n    \"author\": \"67b9069f8c0fb6acbb431c09\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/editPublication/67b906c68c0fb6acbb431c10"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar publicación",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I5MTczZDY4ZWIxYTcxNmUxZmE2YmIiLCJpYXQiOjE3NDAxODQ1OTksImV4cCI6MTc0MDE4ODE5OX0.1F_TatMhjQhB2-lb23m7ySgx_94dZaOrSODbd5M5WqI"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/deletePublication/67b9176168eb1a716e1fa6be"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentario",
+			"item": [
+				{
+					"name": "Agregar comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I5MzdlY2Y0ZGY1ZWY5OTRjOTE5MjkiLCJpYXQiOjE3NDAxOTk2MTksImV4cCI6MTc0MDIwMzIxOX0.GYXjuhzTG9wn_zIJzBQS45TtpDhYIvqmBU6NU65Pcvo"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Este es un comentario de prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/addComment/67b95364ccce5f9648a69cb5"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I5MzdlY2Y0ZGY1ZWY5OTRjOTE5MjkiLCJpYXQiOjE3NDAxOTk2MTksImV4cCI6MTc0MDIwMzIxOX0.GYXjuhzTG9wn_zIJzBQS45TtpDhYIvqmBU6NU65Pcvo"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/deletePublication/67b95364ccce5f9648a69cb5/deleteComment/67b9537cccce5f9648a69cbe"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I5MzdlY2Y0ZGY1ZWY5OTRjOTE5MjkiLCJpYXQiOjE3NDAxOTk2MTksImV4cCI6MTc0MDIwMzIxOX0.GYXjuhzTG9wn_zIJzBQS45TtpDhYIvqmBU6NU65Pcvo"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Este es otro comentario de prueba para la actualización\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/GODB-2023292/v1/publication/editPublication/67b95364ccce5f9648a69cb5/editComment/67b959dd960391516351ef61"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
