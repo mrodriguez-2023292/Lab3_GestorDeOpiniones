@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
+import publicationRoutes from "../src/publication/publication.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 
 const middlewares = (app) => {
@@ -21,6 +22,7 @@ const middlewares = (app) => {
 const routes = (app) =>{
     app.use("/GODB-2023292/v1/auth", authRoutes)
     app.use("/GODB-2023292/v1/user", userRoutes)
+    app.use("/GODB-2023292/v1/publication", publicationRoutes)
 }
 
 const conectarDB = async () =>{

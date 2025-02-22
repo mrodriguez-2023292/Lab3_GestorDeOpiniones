@@ -5,7 +5,7 @@ import { uploadProfilePicture } from "../middlewares/multer-uploads.js"
 
 const router = Router()
 
-router.patch("/updateUser/:uid", updateUserValidator, updateUser)
+router.put("/updateUser/:uid", updateUserValidator, updateUser)
 
 router.patch("/updateImage/:uid", uploadProfilePicture.single("profilePicture"), updateProfilePictureValidator,  updateProfilePicture)
 

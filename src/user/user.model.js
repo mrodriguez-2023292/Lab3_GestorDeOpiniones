@@ -56,7 +56,7 @@ const userSchema = Schema({
 
 {
     versionKey: false,
-    timeStamps: true
+    timestamps: true
 })
 
 userSchema.methods.toJSON = function(){
